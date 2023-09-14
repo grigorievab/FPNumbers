@@ -245,38 +245,5 @@ namespace FPNumbers
             sw.Stop();
             Console.WriteLine($"Time for decimal: {sw.ElapsedMilliseconds}");
         }
-
-        private static int FloatToInt(float f)
-        {
-            byte[] buf = new byte[4];
-            System.IO.MemoryStream ms = new System.IO.MemoryStream(buf);
-            System.IO.BinaryWriter w = new(ms);
-            w.Write(f);
-            System.IO.BinaryReader r = new System.IO.BinaryReader(ms);
-            ms.Position = 0;
-            return r.ReadInt32();
-        }
-
-        private static float IntToFloat(int f)
-        {
-            byte[] buf = new byte[4];
-            System.IO.MemoryStream ms = new System.IO.MemoryStream(buf);
-            System.IO.BinaryWriter w = new(ms);
-            w.Write(f);
-            System.IO.BinaryReader r = new System.IO.BinaryReader(ms);
-            ms.Position = 0;
-            return r.ReadSingle();
-        }
-
-        private static long DoubleToLong(double f)
-        {
-            byte[] buf = new byte[8];
-            System.IO.MemoryStream ms = new System.IO.MemoryStream(buf);
-            System.IO.BinaryWriter w = new System.IO.BinaryWriter(ms);
-            w.Write(f);
-            System.IO.BinaryReader r = new System.IO.BinaryReader(ms);
-            ms.Position = 0;
-            return r.ReadInt64();
-        }
     }
 }
